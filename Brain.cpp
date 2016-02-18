@@ -16,7 +16,8 @@ void Brain::start ()	// реализацмя функции
     Network::GetInstance()->Listen();
     Network::GetInstance()->Send();
     Network::GetInstance()->Disconnect();
-
+    IEngine * right = Body::getInstance()->getRightEngine();
+    right->Rotate('R', 58);
 
 
 
