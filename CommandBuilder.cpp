@@ -2,6 +2,8 @@
 
 CommandBuilder::CommandBuilder()
 {
+    network = new Network();
+    network->listen();
 }
 
 bool CommandBuilder::HasNextCommand()
@@ -9,7 +11,13 @@ bool CommandBuilder::HasNextCommand()
 
 }
 
-ICMD CommandBuilder::GetNextCommand()
+ICMD *CommandBuilder::GetNextCommand()
 {
+    return 0;
+}
 
+
+CommandBuilder::~CommandBuilder()
+{
+    delete network;
 }
