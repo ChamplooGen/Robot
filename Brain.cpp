@@ -1,7 +1,9 @@
 #include <iostream>
+#include <iostream>
 #include "Cam.h"
 #include "Brain.h"
 #include "network.h"
+#include "commandbuilder.h"
 
 void Brain::start ()	// реализацмя функции
 {
@@ -11,16 +13,10 @@ void Brain::start ()	// реализацмя функции
     ICamera * camera = Body::getInstance()->getCamera();
     camera->GetImage();
     std::cout<<"\n";
-    Network::GetInstance()->Connect();
-    Network::GetInstance()->Get();
-    Network::GetInstance()->Listen();
-    Network::GetInstance()->Send();
-    Network::GetInstance()->Disconnect();
-    IEngine * right = Body::getInstance()->getRightEngine();
-    right->Rotate('R', 58);
+    CommandBuilder commandBuilder;
 
 
-
+    //std::cin.get();
 
 //    while(commandBuilder.hasNextCommand()) {
 //        ICommand * cmd = commandBuilder.getNextCommand();
