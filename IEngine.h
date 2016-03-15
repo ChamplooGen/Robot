@@ -4,7 +4,7 @@
 //____________Интерфейс мотора___________
 class IEngine {
 	public:
-		virtual void Rotate(char Dir, int Angle) = 0;
+		virtual void Rotate(QChar Dir, quint16 Angle) = 0;
 		// Dir = {U, D, R, L}
 		// Angle = [0; 180)
 };
