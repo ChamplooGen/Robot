@@ -1,25 +1,33 @@
-#include <iostream>
-#include <iostream>
 #include "Cam.h"
 #include "Brain.h"
-#include "network.h"
-#include "commandbuilder.h"
+#include "Network.h"
+#include "CommandBuilder.h"
 
-void Brain::start ()	// реализацмя функции
+void Brain::start ()
 {
-    std::cout << "I'm working!\n";
-    IEngine * left = Body::getInstance()->getLeftEngine();// Body::getInstance() получаем ссылку на единственный
-    left->Rotate('R', 58);
-    ICamera * camera = Body::getInstance()->getCamera();
-    camera->GetImage();
-    std::cout<<"\n";
+    qDebug() << "Start main logic";
+    qDebug() << "Start command processing";
+
     CommandBuilder commandBuilder;
+    while(commandBuilder.HasNextCommand()) {
+        qDebug() << "New command accepted, trying to execute";
 
+        ICMD * cmd = commandBuilder.GetNextCommand();
+        qDebug() << "Next step";
+        cmd->Execute();
 
-    //std::cin.get();
+        qDebug() << "Command executed, waiting for next one";
+    }
 
-//    while(commandBuilder.hasNextCommand()) {
-//        ICommand * cmd = commandBuilder.getNextCommand();
-//        cmd->execute();
-//    }
+    qDebug() << "Stop command processing";
 } 
+
+
+    // std::cout << "I'm working!\n";
+    // IEngine * left = Body::getInstance()->getLeftEngine();// Body::getInstance() получаем ссылку на единственный
+    // left->Rotate('R', 58);
+    // ICamera * camera = Body::getInstance()->getCamera();
+    // camera->GetImage();
+    // std::cout<<"\n";
+    // CommandBuilder commandBuilder;
+
