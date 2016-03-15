@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Engine.h"
 
-void Engine::Rotate (char Dir, int Angle)	// реализацмя функции
+void Engine::Rotate (QChar Dir, quint16 Angle)	// реализацмя функции
 {
-	std::cout << "Rotating to "<<Dir<<" at "<<Angle<<std::endl;
+    std::cout << "Rotating to "<<Dir.toLatin1()<<" at "<<Angle<<"\n";
 } 
