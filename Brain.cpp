@@ -1,5 +1,3 @@
-#include "Cam.h"
-#include "Brain.h"
 #include "Network.h"
 #include "CommandBuilder.h"
 
@@ -9,9 +7,12 @@ void Brain::start ()
     qDebug() << "Start command processing";
 
     CommandBuilder commandBuilder;
-    while(commandBuilder.HasNextCommand()) {
-        qDebug() << "New command accepted, trying to execute";
+    commandBuilder.GetNetwork()->GetTcpServer()->waitForNewConnection(60000);
+    int i = 0;
+    while(commandBuilder.HasNextCommand() && i < 5) {
 
+        qDebug() << "New command accepted, trying to execute";
+        i++;
         ICMD * cmd = commandBuilder.GetNextCommand();
         qDebug() << "Next step";
         cmd->Execute();
@@ -21,6 +22,7 @@ void Brain::start ()
 
     qDebug() << "Stop command processing";
 } 
+
 
 
     // std::cout << "I'm working!\n";
