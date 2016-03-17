@@ -23,7 +23,9 @@ class Network: public QObject
     public:
         Network();
         void listen();
-        void getCommand() {recievingCommand();}
+        void getCommand() {return recievingCommand();}
+        QTcpServer * GetTcpServer() const {return tcpServer;}
+        QTcpSocket * GetTcpSocket() const {return tcpSocket;}
 
         static QChar GetKeyWord() {return keyWord;}
         static QChar GetObject() {return object;}
@@ -36,3 +38,4 @@ class Network: public QObject
 };
 
 #endif // NETWORK_H
+
