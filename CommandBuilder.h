@@ -1,17 +1,20 @@
 #ifndef COMMANDBUILDER_H
 #define COMMANDBUILDER_H
-#include "ICmd.h"
-#include "network.h"
+
+#include "CmdLeftEngine.h"
+#include "Network.h"
 
 class CommandBuilder
 {
 private:
-    Network *network;
+    Network * network;
 public:
-    ~CommandBuilder();
+   ~CommandBuilder();
     CommandBuilder();
-    bool HasNextCommand();
-    ICMD *GetNextCommand();
+
+    bool   HasNextCommand();
+    ICMD * GetNextCommand();
+    Network * GetNetwork() const { return network;}
 
 };
 
