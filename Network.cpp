@@ -77,5 +77,5 @@ void Network::onNewConnection()
     tcpSocket = tcpServer->nextPendingConnection();
     connect(tcpSocket, SIGNAL(disconnected()), tcpSocket, SLOT(deleteLater(deleteLater())));
     connect(tcpSocket, SIGNAL(readyRead()), tcpServer, SLOT(recievingCommand()));
-    qDebug() << "Connection established.";
+    if (tcpSocket != NULL) qDebug() << "Connection established.";
 }

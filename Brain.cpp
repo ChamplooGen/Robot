@@ -10,6 +10,7 @@ void Brain::start ()
     CommandBuilder commandBuilder;
     commandBuilder.GetNetwork()->GetTcpServer()->waitForNewConnection(60000);
     int i = 0;
+
     while(i < 5 && commandBuilder.HasNextCommand()) {
 
         if (commandBuilder.GetNetwork()->GetTcpSocket()->bytesAvailable() != 0)
