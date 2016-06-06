@@ -69,7 +69,6 @@ void Network::getCommand()
         recievingCommand(); // пока команда не готова, пытаемся ее получить
     }
     commandIsReady = false; // как только получили, обнулили индикатор готовности
-    qDebug() << " YOUR COMMAND IS READY, SIR!";
 }
 
 void Network::onNewConnection()

@@ -13,16 +13,16 @@ void Brain::start ()
 
     while(i < 5 && commandBuilder.HasNextCommand()) {
 
-        if (commandBuilder.GetNetwork()->GetTcpSocket()->bytesAvailable() != 0)
-        {
-            qDebug() << "New command accepted, trying to execute";
-            i++;
-            ICMD * cmd = commandBuilder.GetNextCommand();
-            qDebug() << "Next step";
-            cmd->Execute();
+//    commandBuilder.GetNetwork()->GetTcpSocket()->waitForReadyRead();
 
-            qDebug() << "Command executed, waiting for next one";
-        }
+    qDebug() << "New command accepted, trying to execute";
+    i++;
+    ICMD * cmd = commandBuilder.GetNextCommand();
+    qDebug() << "Next step";
+    cmd->Execute();
+
+    qDebug() << "Command executed, waiting for next one";
+
     }
 
     qDebug() << "Stop command processing";
