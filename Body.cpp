@@ -1,7 +1,7 @@
 #include "Body.h"
 #include "Engine.h"
 #include "Cam.h"
-#include "Net.h"
+#include "Network.h"
 
 Body * Body::instance = 0;
 

@@ -10,6 +10,8 @@ CommandBuilder::CommandBuilder()
 
 bool CommandBuilder::HasNextCommand()   // не работает потому, что нет подключения
 {
+    //network->getCommand();      // нужно ли?
+
     if (network->GetKeyWord() != 'F') return true;
     else return false;
     //return false;   // !__NB__! создать функцию для опознавания того, что команда получена !__NB__!

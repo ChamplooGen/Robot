@@ -20,10 +20,12 @@ class Network: public QObject
         static QChar direction;
         static quint16 angle;
 
+        bool commandIsReady;    // индикатор готовности команды
+
     public:
         Network();
         void listen();
-        void getCommand() {return recievingCommand();}
+        void getCommand();
         QTcpServer * GetTcpServer() const {return tcpServer;}
         QTcpSocket * GetTcpSocket() const {return tcpSocket;}
 
@@ -31,6 +33,9 @@ class Network: public QObject
         static QChar GetObject() {return object;}
         static QChar GetDirection() {return direction;}
         static quint16 GetAngle() {return angle;}
+
+
+        bool IsCommandReady() const { return commandIsReady;}
 
     private slots:
         void onNewConnection();

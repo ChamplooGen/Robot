@@ -3,7 +3,7 @@
 
 #include "ICam.h"
 #include "IEngine.h"
-#include "INet.h"
+#include "Network.h"
 
 class Body {
 private:

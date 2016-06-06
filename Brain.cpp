@@ -1,5 +1,6 @@
 #include "Network.h"
 #include "CommandBuilder.h"
+#include "Brain.h"
 
 void Brain::start ()
 {
@@ -9,7 +10,7 @@ void Brain::start ()
     CommandBuilder commandBuilder;
     commandBuilder.GetNetwork()->GetTcpServer()->waitForNewConnection(60000);
     int i = 0;
-    while(commandBuilder.HasNextCommand() && i < 5) {
+    while(i < 5 && commandBuilder.HasNextCommand()) {
 
         qDebug() << "New command accepted, trying to execute";
         i++;
