@@ -45,14 +45,15 @@ void Network::recievingCommand()
 
     in >> keyWord;
 
-    if(keyWord!='I')    // если команда не "Сфотографировать"
+    if(keyWord != 'I')    // если команда не "Сфотографировать"
     {
+        in.skipRawData(4);
         in >> object;
         in >> direction;
         in >> angle;
     }
     commandIsReady = true;
-    qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord<<" , "<<object<<" , "<<direction<<", "<<angle<<")\n";
+    qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<<", "<<angle<<")\n";
 }
 
 
