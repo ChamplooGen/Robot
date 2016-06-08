@@ -6,7 +6,7 @@
 class Camera: public ICamera { // public Icamera - от кого наследуется
 	public:
 		void GetImage();
-        void Rotate(QChar Dir, quint16 Angle = 0) ; // т.к. уже унаследован
+        void Rotate(QChar Dir) ; // т.к. уже унаследован
 };
 
 

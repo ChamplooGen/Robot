@@ -8,7 +8,7 @@
     QChar Network::keyWord = '-1';
     QChar Network::object = '-1';
     QChar Network::direction = '-1';
-    quint16 Network::angle = 0;
+    //quint16 Network::angle = 0;
 
 //Network * Network::instance = 0;
 
@@ -37,7 +37,6 @@ void Network::recievingCommand()
             return;
         in >> blockSize;    // считали размер блока данных
     }
-    qDebug() << " Command length = " << blockSize;
 
     if (tcpSocket->bytesAvailable() < blockSize)
         return; // ждем, пока данные прийдут полностью;
@@ -50,10 +49,11 @@ void Network::recievingCommand()
         in.skipRawData(4);
         in >> object;
         in >> direction;
-        in >> angle;
+        //in >> angle;
     }
     commandIsReady = true;
-    qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<<", "<<angle<<")\n";
+// Строка проверки правильности приема команды
+    //qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<</*", "<<angle<<*/")\n";
 }
 
 

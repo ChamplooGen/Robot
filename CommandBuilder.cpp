@@ -10,29 +10,27 @@ CommandBuilder::CommandBuilder()
 
 bool CommandBuilder::HasNextCommand()   // не работает потому, что нет подключения
 {
-
     GetNetwork()->GetTcpSocket()->waitForReadyRead();
-//    if (network->GetKeyWord() != 'F') return true;
-//    else return false;
 }
 
 ICMD * CommandBuilder::GetNextCommand()
 {
     qDebug() <<"Trying to get new command";
     network->getCommand();
-    //qDebug() << network->GetKeyWord().toLatin1() << " " << network->GetObject().toLatin1(); // строка проверка того, что в текущей команде
     qDebug() <<"Got it. Trying to build it";
 
-    CmdLeftEngine * cmd;
-    cmd = new CmdLeftEngine();
+    Cmd * cmd;
+    cmd = new Cmd();
     qDebug() <<"It was built";
 
-    if (network->GetKeyWord() == 'T' && network->GetObject() == 'l')
-    {
-        qDebug() << " This command tells to turn left engine";
-        return cmd;       // !__NB__! создать функцию для получения новой команды !__NB__!
-    }
-    else return 0;
+// Эта строка пропускает лишь команды для поворота левого двигателя
+//    if (network->GetKeyWord() == 'T' && network->GetObject() == 'l')
+//    {
+//        qDebug() << " This command tells to turn left engine";
+//        return cmd;       // !__NB__! создать функцию для получения новой команды !__NB__!
+//    }
+//    else return 0;
+    return cmd;
 }
 
 
