@@ -6,17 +6,17 @@
 *****************************************************************
 
 Возможные команды:
-                int  char   char     char
-  * Rotate: ( length | T | Object | Direction)
-    T = Turn;
-    Object = {l, r, c}; l = leftEngine, r = rightEngine, c = camera;
-    Direction = {F, B}; F = Forward, B = Back;
+                int  char    char      char
+  * Rotate: ( length | M | Direction | Type )
+    M = Move
+    Direction = {F, B, L, R}; F = Forward, B = Back, L = Left, R = right;
+    Type = {R, S}; R = Run, S = Stop;
 
   * GetImage: ( length | I )
     I = Image;
 
-  * Finish : (length | F )
-    F = Finish;
+  //* Finish : (length | E )
+  //  F = Finish;
 
 *****************************************************************
 Как принимаем:

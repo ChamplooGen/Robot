@@ -43,14 +43,11 @@ void Network::recievingCommand()
     else blockSize = 0;
 
     in >> keyWord;
+// Даже если команда "Сфотографировать", считываем фиктивные параметры в object и direction
+    in.skipRawData(4);
+    in >> object;
+    in >> direction;
 
-    if(keyWord != 'I')    // если команда не "Сфотографировать"
-    {
-        in.skipRawData(4);
-        in >> object;
-        in >> direction;
-        //in >> angle;
-    }
     commandIsReady = true;
 // Строка проверки правильности приема команды
     //qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<</*", "<<angle<<*/")\n";
