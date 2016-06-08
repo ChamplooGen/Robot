@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
     QChar Network::keyWord = '-1';
-    QChar Network::object = '-1';
+    QChar Network::type = '-1';
     QChar Network::direction = '-1';
     //quint16 Network::angle = 0;
 
@@ -15,9 +15,6 @@
 Network::Network() : QObject()
 {
     qDebug() << "Building Network object";
-    // инициализация начальных данных
-    //keyWord = object = direction = '0';
-    //angle = 0;
 
     tcpServer = new QTcpServer(this);
     connect(tcpServer, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
@@ -45,10 +42,11 @@ void Network::recievingCommand()
     in >> keyWord;
 // Даже если команда "Сфотографировать", считываем фиктивные параметры в object и direction
     in.skipRawData(4);
-    in >> object;
+    in >> type;
     in >> direction;
 
     commandIsReady = true;
+    tcpSocket->reset();
 // Строка проверки правильности приема команды
     //qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<</*", "<<angle<<*/")\n";
 }

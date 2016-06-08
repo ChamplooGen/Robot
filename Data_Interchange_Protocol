@@ -6,11 +6,12 @@
 *****************************************************************
 
 Возможные команды:
-                int  char    char      char
-  * Rotate: ( length | M | Direction | Type )
+                int  char  char      char
+  * Rotate: ( length | M | Type |  Direction )
     M = Move
-    Direction = {F, B, L, R}; F = Forward, B = Back, L = Left, R = right;
     Type = {R, S}; R = Run, S = Stop;
+    Direction = {F, B, L, R}; F = Forward, B = Back, L = Left, R = right;
+
 
   * GetImage: ( length | I )
     I = Image;
