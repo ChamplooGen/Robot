@@ -1,6 +1,6 @@
 #include "Network.h"
 #include <iostream>
-#include <QtWidgets>
+//#include <QtWidgets>
 #include <QtNetwork>
 
 #include <stdlib.h>
@@ -20,6 +20,7 @@ Network::Network() : QObject()
     connect(tcpServer, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
 
     commandIsReady = false;
+    blockSize = 0;
     qDebug() << "Network object created";
 }
 
@@ -31,12 +32,18 @@ void Network::recievingCommand()
     if (blockSize == 0) // только начинаем чтение данных
     {
         if (tcpSocket->bytesAvailable() < (int)sizeof(quint16))
+        {
+            //tcpSocket->waitForReadyRead();
             return;
+        }
         in >> blockSize;    // считали размер блока данных
     }
 
     if (tcpSocket->bytesAvailable() < blockSize)
-        return; // ждем, пока данные прийдут полностью;
+    {
+        //tcpSocket->waitForReadyRead(10);
+        return;
+    } // ждем, пока данные прийдут полностью;
     else blockSize = 0;
 
     in >> keyWord;
@@ -46,7 +53,6 @@ void Network::recievingCommand()
     in >> direction;
 
     commandIsReady = true;
-    tcpSocket->reset();
 // Строка проверки правильности приема команды
     //qDebug() <<"\nWe have a new command! Here it is:\n ("<<keyWord.toLatin1()<<" , "<<object.toLatin1()<<" , "<<direction.toLatin1()<</*", "<<angle<<*/")\n";
 }
@@ -54,13 +60,14 @@ void Network::recievingCommand()
 
 void Network::listen()
 {
-    tcpServer->listen(QHostAddress::LocalHost, 5100); // от 0 до 1000 идут системные порты
+    tcpServer->listen(QHostAddress::Any, 5100); // от 0 до 1000 идут системные порты
     qDebug() << "Network object started listening";
 }
 
 void Network::getCommand()
 {
-    while (IsCommandReady() == false)
+
+    while (!IsCommandReady())
     {
         recievingCommand(); // пока команда не готова, пытаемся ее получить
     }
