@@ -1,7 +1,7 @@
 #ifndef COMMANDBUILDER_H
 #define COMMANDBUILDER_H
 
-#include "CmdLeftEngine.h"
+#include "Cmd.h"
 #include "Network.h"
 
 class CommandBuilder

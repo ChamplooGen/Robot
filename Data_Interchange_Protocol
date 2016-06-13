@@ -6,19 +6,18 @@
 *****************************************************************
 
 Возможные команды:
-                int  char   char     char       int     int
-  * Rotate: ( length | T | Object | Direction | Angle | Speed )
-    T = Turn;
-    Object = {l, r, c}; l = leftEngine, r = rightEngine, c = camera;
-    Direction = {F, B}; F = Forward, B = Back;
-    Speed = (1 ; 5);
-    Angle = (0 ; 65535);
+                int  char  char      char
+  * Rotate: ( length | M | Type |  Direction )
+    M = Move
+    Type = {R, S}; R = Run, S = Stop;
+    Direction = {F, B, L, R}; F = Forward, B = Back, L = Left, R = right;
+
 
   * GetImage: ( length | I )
     I = Image;
 
-  * Finish : (length | F )
-    F = Finish;
+  //* Finish : (length | E )
+  //  F = Finish;
 
 *****************************************************************
 Как принимаем:
