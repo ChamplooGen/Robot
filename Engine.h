@@ -5,7 +5,7 @@
 
 class Engine: public IEngine {
 	public:
-        void Rotate(QChar Dir, quint16 Angle);
+        void Rotate(QChar Dir);
 };
 
 #endif

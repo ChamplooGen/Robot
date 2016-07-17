@@ -9,19 +9,14 @@ void Brain::start ()
 
     CommandBuilder commandBuilder;
     commandBuilder.GetNetwork()->GetTcpServer()->waitForNewConnection(60000);
-    int i = 0;
+    qDebug() <<"***********************************";
+    while(commandBuilder.HasNextCommand()) {       // ATTENTION! : после непродолжительного безрезультатного ожидания команды программа оканчивает свою работу
 
-    while(i < 5 && commandBuilder.HasNextCommand()) {
-
-//    commandBuilder.GetNetwork()->GetTcpSocket()->waitForReadyRead();
-
-    qDebug() << "New command accepted, trying to execute";
-    i++;
+//    qDebug() << "New command accepted, trying to execute";
     ICMD * cmd = commandBuilder.GetNextCommand();
-    qDebug() << "Next step";
     cmd->Execute();
 
-    qDebug() << "Command executed, waiting for next one";
+//    qDebug() << "Command executed, waiting for next one\n";
 
     }
 

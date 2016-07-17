@@ -16,9 +16,9 @@ class Network: public QObject
     // элементы пустой команды
 
         static QChar keyWord;
-        static QChar object;
+        static QChar type;
         static QChar direction;
-        static quint16 angle;
+        //static quint16 angle;
 
         bool commandIsReady;    // индикатор готовности команды
 
@@ -30,9 +30,9 @@ class Network: public QObject
         QTcpSocket * GetTcpSocket() const {return tcpSocket;}
 
         static QChar GetKeyWord() {return keyWord;}
-        static QChar GetObject() {return object;}
+        static QChar GetType() {return type;}
         static QChar GetDirection() {return direction;}
-        static quint16 GetAngle() {return angle;}
+        //static quint16 GetAngle() {return angle;}
 
 
         bool IsCommandReady() const { return commandIsReady;}

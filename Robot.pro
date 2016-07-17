@@ -6,11 +6,11 @@ SOURCES += \
     Body.cpp \
     Brain.cpp \
     Cam.cpp \
-    CmdLeftEngine.cpp \
     CommandBuilder.cpp \
     Engine.cpp \
     main.cpp \
-    Network.cpp
+    Network.cpp \
+    Cmd.cpp
 
 DISTFILES += \
     Data_Interchange_Protocol
@@ -19,11 +19,11 @@ HEADERS += \
     Body.h \
     Brain.h \
     Cam.h \
-    CmdLeftEngine.h \
     CommandBuilder.h \
     Engine.h \
     ICam.h \
     ICmd.h \
     IEngine.h \
-    Network.h
+    Network.h \
+    Cmd.h
 
